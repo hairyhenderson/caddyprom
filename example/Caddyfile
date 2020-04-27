@@ -4,11 +4,6 @@
 
 localhost
 
-log {
-    output stderr
-    
-}
-
 prometheus
 
 route {
