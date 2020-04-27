@@ -3,6 +3,9 @@
 //
 // The simplest use could be in a Caddyfile like:
 //
+//    {
+//        order prometheus first
+//    }
 //    localhost
 //
 //    prometheus
