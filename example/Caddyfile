@@ -1,0 +1,16 @@
+{
+    order prometheus first
+}
+
+localhost
+
+log {
+    output stderr
+    
+}
+
+prometheus
+
+route {
+    teapot
+}
