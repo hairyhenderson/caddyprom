@@ -1,0 +1,55 @@
+{
+  "logging": {
+    "logs": {
+      "log0": {
+        "encoder": {
+          "format": "prometheus",
+          "wrap": {
+            "format": "console"
+          }
+        },
+        "level": "DEBUG"
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+
+        "srv0": {
+          "listen": [":443"],
+          "routes": [
+            {
+              "match": [{ "host": ["localhost"] }],
+
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        // { "handler": "prometheus" },
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            { "handle": [{ "handler": "teapot" }] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "terminal": true
+            }
+          ],
+          "logs": {
+            "logger_names": {
+              "localhost": "log0"
+            }
+          }
+        }
+      }
+    }
+  }
+}

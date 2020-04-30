@@ -19,9 +19,14 @@ const (
 var (
 	requestCount    *prometheus.CounterVec
 	requestDuration *prometheus.HistogramVec
+	requestSize     *prometheus.HistogramVec
 	responseSize    *prometheus.HistogramVec
 	responseStatus  *prometheus.CounterVec
 	responseLatency *prometheus.HistogramVec
+
+	logCount       *prometheus.CounterVec
+	logFields      *prometheus.HistogramVec
+	logAddedFields *prometheus.HistogramVec
 )
 
 func (m *Metrics) initMetrics(ctx caddy.Context) error {

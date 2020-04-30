@@ -1,11 +1,17 @@
-{
-    order prometheus first
-}
+#{
+#    order prometheus first
+#}
 
 localhost
 
-prometheus
-
-route {
-    teapot
+log {
+    level DEBUG
 }
+
+file_server
+
+#prometheus
+#
+#route {
+#    teapot
+#}
