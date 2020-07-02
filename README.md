@@ -3,15 +3,12 @@
 This implements a [Caddy v2 module](https://caddyserver.com/docs/extending-caddy)
 that exposes metrics in the [Prometheus](https://prometheus.io/) format.
 
-## Build caddy with caddyprom module
-Download xcaddy latest relsease : https://github.com/caddyserver/xcaddy/releases/  
-build caddy with prometheus : 
-```console
-./xcaddy build --with https://github.com/hairyhenderson/caddyprom
-```
+To use this module, you must build a Caddy binary with the module compiled in. Use [xcaddy](https://github.com/caddyserver/xcaddy#install) for this.
 
 ## Usage
+
 ### Caddyfile
+
 The simplest use could be in a Caddyfile like:
 
 ```
@@ -24,9 +21,11 @@ localhost
 prometheus
 ```
 
-### Json config
-Here is an exemple using caddy as a reverse proxy
-```javascript
+### JSON config
+
+Here is an example that tracks metrics for Caddy's `reverse_proxy` module as well:
+
+```json
 {
     "apps": {
         "http": {
@@ -80,6 +79,7 @@ Here is an exemple using caddy as a reverse proxy
 ```
 
 ## Get metrics
+
 Then, when using a Caddy server with this module enabled:
 
 ```console
