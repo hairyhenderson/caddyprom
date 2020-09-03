@@ -33,7 +33,7 @@ func init() {
 // Metrics -
 type Metrics struct {
 	Addr string `json:"address,omitempty"`
-	Path string
+	Path string	`json:"path,omitempty"`
 
 	useCaddyAddr   bool
 	latencyBuckets []float64
