@@ -33,9 +33,9 @@ func init() {
 // Metrics -
 type Metrics struct {
 	Addr string `json:"address,omitempty"`
+	Path string
 
 	useCaddyAddr   bool
-	path           string
 	latencyBuckets []float64
 	sizeBuckets    []float64
 	metricsHandler http.Handler
@@ -71,8 +71,18 @@ func (m *Metrics) Provision(ctx caddy.Context) error {
 // UnmarshalCaddyfile -
 func (m *Metrics) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
-		d.Args(&m.Addr)
+		for nesting := d.Nesting(); d.NextBlock(nesting); {
+			switch d.Val() {
+			case "address": // optional: m.Addr has a default value
+				d.Args(&m.Addr)
+			case "path": // optional: m.Path has a default value
+				d.Args(&m.Path)
+			default:
+				return d.Errf("unrecognized subdirective '%s'", d.Val())
+			}
+		}
 	}
+	
 	return nil
 }
 

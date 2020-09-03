@@ -135,6 +135,8 @@ github.com/caddyserver/certmagic v0.10.12 h1:aZtgzcIssiMSlP0jDdpDBbBzQ5INf5eKL9T
 github.com/caddyserver/certmagic v0.10.12/go.mod h1:Y8jcUBctgk/IhpAzlHKfimZNyXCkfGgRTC0orl8gROQ=
 github.com/caddyserver/certmagic v0.11.2 h1:nPBqyuFNHJEf2FwC1ixJjArtTKWyPqpaH6k4jl7gxYI=
 github.com/caddyserver/certmagic v0.11.2/go.mod h1:fqY1IZk5iqhsj5FU3Vw20Sjq66tEKaanTFYNZ74soMY=
+github.com/caddyserver/xcaddy v0.1.5 h1:5kOplAJils1L9nIhzmHerVUQ9o4WF/bMEuw2DRIOSQE=
+github.com/caddyserver/xcaddy v0.1.5/go.mod h1:Gxj0yR1COUiWmOluEEQv8Ls7KZr47g5eltp9m0FFaJU=
 github.com/cenkalti/backoff/v4 v4.0.0 h1:6VeaLF9aI+MAUQ95106HwWzYZgJJpZ4stumjj6RFYAU=
 github.com/cenkalti/backoff/v4 v4.0.0/go.mod h1:eEew/i+1Q6OrCDZh3WiXYv3+nJwBASZ8Bog/87DQnVg=
 github.com/cenkalti/backoff/v4 v4.0.2 h1:JIufpQLbh4DkbQoii76ItQIUFzevQSqOLZca4eamEDs=

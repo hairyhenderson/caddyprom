@@ -29,8 +29,8 @@ func (m *Metrics) initMetrics(ctx caddy.Context) error {
 	log := ctx.Logger(m)
 
 	m.registerMetrics("caddy", "http")
-	if m.path == "" {
-		m.path = defaultPath
+	if m.Path == "" {
+		m.Path = defaultPath
 	}
 	if m.Addr == "" {
 		m.Addr = defaultAddr
@@ -38,7 +38,7 @@ func (m *Metrics) initMetrics(ctx caddy.Context) error {
 
 	if !m.useCaddyAddr {
 		mux := http.NewServeMux()
-		mux.Handle(m.path, m.metricsHandler)
+		mux.Handle(m.Path, m.metricsHandler)
 
 		srv := &http.Server{Handler: mux}
 		// if m.Addr does not have a port just add the default one
