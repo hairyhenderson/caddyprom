@@ -71,10 +71,15 @@ func (m *Metrics) Provision(ctx caddy.Context) error {
 // UnmarshalCaddyfile -
 func (m *Metrics) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
+		setInline := d.Args(&m.Addr) // setInline is true if the address was set inline
 		for nesting := d.Nesting(); d.NextBlock(nesting); {
 			switch d.Val() {
 			case "address": // optional: m.Addr has a default value
-				d.Args(&m.Addr)
+				if !setInline {
+					d.Args(&m.Addr)
+				} else {
+					return d.Errf("listen address has already been set")
+				}
 			case "path": // optional: m.Path has a default value
 				d.Args(&m.Path)
 			default:
