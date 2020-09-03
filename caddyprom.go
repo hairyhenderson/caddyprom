@@ -70,11 +70,9 @@ func (m *Metrics) Provision(ctx caddy.Context) error {
 
 // UnmarshalCaddyfile -
 func (m *Metrics) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
-	// for d.Next() {
-	// 	if !d.Args(&m.Addr) {
-	// 		return d.ArgErr()
-	// 	}
-	// }
+	for d.Next() {
+		d.Args(&m.Addr)
+	}
 	return nil
 }
 
