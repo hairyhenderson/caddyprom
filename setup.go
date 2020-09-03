@@ -1,6 +1,7 @@
 package caddyprom
 
 import (
+	"strings"
 	"fmt"
 	"net"
 	"net/http"
@@ -40,6 +41,10 @@ func (m *Metrics) initMetrics(ctx caddy.Context) error {
 		mux.Handle(m.path, m.metricsHandler)
 
 		srv := &http.Server{Handler: mux}
+		// if m.Addr does not have a port just add the default one
+		if !strings.Contains(m.Addr, ":") {
+			m.Addr += ":" + strings.Split(defaultAddr, ":")[1]
+		}
 		listener, err := net.Listen("tcp", m.Addr)
 		if err != nil {
 			return fmt.Errorf("failed to listen to %s: %w", m.Addr, err)
