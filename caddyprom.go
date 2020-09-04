@@ -33,7 +33,7 @@ func init() {
 // Metrics -
 type Metrics struct {
 	Addr string `json:"address,omitempty"`
-	Path string	`json:"path,omitempty"`
+	Path string `json:"path,omitempty"`
 
 	useCaddyAddr   bool
 	latencyBuckets []float64
@@ -87,7 +87,7 @@ func (m *Metrics) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 			}
 		}
 	}
-	
+
 	return nil
 }
 
