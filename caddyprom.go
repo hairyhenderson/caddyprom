@@ -102,9 +102,9 @@ func parseCaddyfile(h httpcaddyfile.Helper) (caddyhttp.MiddlewareHandler, error)
 func (m Metrics) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddyhttp.Handler) (err error) {
 	// TODO: break this out to record the rest of the metrics
 	chain :=
-		promhttp.InstrumentHandlerCounter(requestCount,
-			promhttp.InstrumentHandlerDuration(requestDuration,
-				promhttp.InstrumentHandlerResponseSize(responseSize, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		InstrumentHandlerCounter(requestCount,
+			InstrumentHandlerDuration(requestDuration,
+				InstrumentHandlerResponseSize(responseSize, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 					err = next.ServeHTTP(w, r)
 				})),
 			),

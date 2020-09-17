@@ -90,6 +90,14 @@ caddy_http_response_size_bytes_sum{code="418",method="get"} 42
 ...
 ```
 
+## Acknowledgments
+
+* In order to make "path" metrics to be processed, we had to copy and make some changes to the promhttp lib. It is unlikelly that the original project will accept those changes, so we kept the copy on this same project. See files promhttp*
+
+* Thanks to Prometheus promhttp. See original code at https://github.com/prometheus/client_golang/tree/master/prometheus/promhttp
+
+* Thanks to https://github.com/damnever/caddyprom for the insights on how to add "path" as metric labels
+
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)

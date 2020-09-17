@@ -1,10 +1,10 @@
 package caddyprom
 
 import (
-	"strings"
 	"fmt"
 	"net"
 	"net/http"
+	"strings"
 
 	"github.com/caddyserver/caddy/v2"
 	"github.com/prometheus/client_golang/prometheus"
@@ -14,7 +14,7 @@ import (
 
 const (
 	defaultPath = "/metrics"
-	defaultAddr = "localhost:9180"
+	defaultAddr = "0.0.0.0:9180"
 )
 
 var (
@@ -45,6 +45,7 @@ func (m *Metrics) initMetrics(ctx caddy.Context) error {
 		if !strings.Contains(m.Addr, ":") {
 			m.Addr += ":" + strings.Split(defaultAddr, ":")[1]
 		}
+		zap.S().Info("Binding prometheus exporter to %s", m.Addr)
 		listener, err := net.Listen("tcp", m.Addr)
 		if err != nil {
 			return fmt.Errorf("failed to listen to %s: %w", m.Addr, err)
@@ -69,7 +70,7 @@ func (m *Metrics) registerMetrics(namespace, subsystem string) {
 	}
 
 	// TODO: add "handler" and probably others
-	httpLabels := []string{"code", "method"}
+	httpLabels := []string{"code", "method", "path"}
 
 	requestCount = promauto.NewCounterVec(prometheus.CounterOpts{
 		Namespace: namespace,
