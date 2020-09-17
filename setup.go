@@ -63,10 +63,10 @@ func (m *Metrics) initMetrics(ctx caddy.Context) error {
 
 func (m *Metrics) registerMetrics(namespace, subsystem string) {
 	if m.latencyBuckets == nil {
-		m.latencyBuckets = append(prometheus.DefBuckets, 15, 20, 30, 60, 120, 180, 240, 480, 960)
+		m.latencyBuckets = []float64{.05, .2, 1, 3, 10, 60}
 	}
 	if m.sizeBuckets == nil {
-		m.sizeBuckets = []float64{0, 500, 1000, 2000, 3000, 4000, 5000, 10000, 20000, 30000, 50000, 1e5, 5e5, 1e6, 2e6, 3e6, 4e6, 5e6, 10e6}
+		m.sizeBuckets = []float64{0, 500, 5000, 50000, 500000, 5000000}
 	}
 
 	// TODO: add "handler" and probably others

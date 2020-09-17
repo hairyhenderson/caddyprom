@@ -19,12 +19,10 @@ ADD /promhttp_fork_delegator.go /app/caddyprom/
 ADD /promhttp_fork_instrument_server.go /app/caddyprom/
 ADD /setup.go /app/caddyprom/
 
-# RUN CGO_ENABLED=0 \
 RUN xcaddy build \
     --output /app/caddy \
     --with github.com/lucaslorentz/caddy-docker-proxy/plugin/v2 \
     --with github.com/stutzlab/caddyprom=/app/caddyprom
-    # --with github.com/miekg/caddy-prometheus=/tmp/caddy-prometheus
 
 
 FROM alpine:3.12.0
