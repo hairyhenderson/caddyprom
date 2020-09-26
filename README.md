@@ -1,6 +1,6 @@
-# :warning: This module is deprecated! Caddy v2.2.0-rc.2 (and later) contains built-in metrics support.
+# :warning: This module is deprecated! Caddy v2.2.0 (and later) contains built-in metrics support.
 
-:mega: _When Caddy v2.2.0 is released, I will be archiving this repository. Thanks to everyone for using and contributing to this module! It has been invaluable in making decisions toward metrics in Caddy's core!_
+:mega: _Now that Caddy v2.2.0 has been released, I will be archiving this repository. Thanks to everyone for using and contributing to this module! It has been invaluable in making decisions toward metrics in Caddy's core!_
 
 # Prometheus metrics module for Caddy v2
 
